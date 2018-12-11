@@ -72,18 +72,57 @@ void Doublelinkedlist::deletenode(string name)
 
 Node * Doublelinkedlist::findnode(string name)
 {
+	Node *current = first;
+	while(current!=last)
+	{
+		if (current->next->itemName == name)
+		{
+			return current;
+		}
+		else
+		{
+			current = current->next;
+		}
+	}
 	return nullptr;
 }
 
 Node * Doublelinkedlist::findposition(int pos) const
 {
-	return nullptr;
+	if (pos > numofnodes||pos < 0)
+	{
+		cout << "Invalid position!" << endl;
+		return nullptr;
+	}
+	Node *current = first;
+	for (int n = 0; n < pos; n++)
+	{
+		current = current->next;
+	}
+	return current;
 }
 
 void Doublelinkedlist::swapnode(int pos1, int pos2) const
 {
+	if (pos1 > numofnodes || pos1<0 || pos2>numofnodes || pos2 < 0)
+	{
+		cout << "Please enter valid position(s)" << endl;
+		return;
+	}
+	int i = pos1 - pos2;
+	if (i == 0)
+	{
+		cout << "Please enter different numbers" << endl;
+		return;
+	}
+	
 }
 
 void Doublelinkedlist::print()
 {
+	Node *current=first;
+	while (current != last)
+	{
+		cout << current->itemName << fixed(6) << current->itemNo << fixed(6) << current->itemPrice;
+	}
 }
